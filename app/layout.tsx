@@ -30,11 +30,29 @@ export const metadata: Metadata = {
   title: "Crich Joved Veridiano — AI Engineer",
   description:
     "AI Engineer building agentic LLM systems, computer vision pipelines, and RAG infrastructure end-to-end, from architecture to production.",
+  icons: {
+    icon: "/tab.png",
+  },
   openGraph: {
     title: "Crich Joved Veridiano — AI Engineer",
     description:
       "AI Engineer building agentic LLM systems, computer vision pipelines, and RAG infrastructure end-to-end, from architecture to production.",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Crich Joved Veridiano — AI Engineer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Crich Joved Veridiano — AI Engineer",
+    description:
+      "AI Engineer building agentic LLM systems, computer vision pipelines, and RAG infrastructure end-to-end, from architecture to production.",
+    images: ["/og-image.png"],
   },
 };
 

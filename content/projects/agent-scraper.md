@@ -4,6 +4,8 @@ title: "Agent Scraper"
 subtitle: "An agentic data and intelligence platform unifying scattered Philippine agricultural data sources — from raw scraping to a reasoning agent, deployed in production."
 featured: true
 order: 1
+domain: "Agents · RAG"
+coverImage: "/agent-scraper.png"
 techStack:
   - "Python 3.12"
   - "FastAPI"

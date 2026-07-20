@@ -6,6 +6,11 @@ import { marked } from "marked";
 const CONTENT_DIR = path.join(process.cwd(), "content");
 const PROJECTS_DIR = path.join(CONTENT_DIR, "projects");
 
+export type SkillBand = {
+  label: string;
+  detail: string;
+};
+
 export type Profile = {
   name: string;
   role: string;
@@ -15,8 +20,11 @@ export type Profile = {
   linkedin: string;
   location: string;
   resumeFile: string;
+  hasResume: boolean;
+  photoFile: string;
+  hasPhoto: boolean;
   bioHtml: string;
-  skillsHtml: string;
+  skills: SkillBand[];
 };
 
 export type Project = {
@@ -25,6 +33,8 @@ export type Project = {
   subtitle: string;
   featured: boolean;
   order: number;
+  domain: string;
+  coverImage: string;
   techStack: string[];
   contentHtml: string;
 };
@@ -46,10 +56,37 @@ function splitProfileBody(body: string): { bio: string; skills: string } {
   };
 }
 
+/** Parses `- **Label** — detail` skill lines into scannable bands. */
+function parseSkillBands(skillsMarkdown: string): SkillBand[] {
+  return skillsMarkdown
+    .split("\n")
+    .map((line) => line.trim())
+    .filter((line) => line.startsWith("- "))
+    .map((line) => {
+      const match = line.match(/^-\s+\*\*(.+?)\*\*\s*[—–-]\s*(.+)$/);
+      if (!match) return null;
+      return { label: match[1].trim(), detail: match[2].trim() };
+    })
+    .filter((band): band is SkillBand => band !== null);
+}
+
 export function getProfile(): Profile {
   const raw = fs.readFileSync(path.join(CONTENT_DIR, "profile.md"), "utf8");
   const { data, content } = matter(raw);
   const { bio, skills } = splitProfileBody(content);
+  const resumeFile = data.resumeFile ?? "/resume.pdf";
+  const resumePath = path.join(
+    process.cwd(),
+    "public",
+    resumeFile.replace(/^\//, ""),
+  );
+  const photoFile = data.photoFile ?? "/photo.png";
+  const photoPath = path.join(
+    process.cwd(),
+    "public",
+    photoFile.replace(/^\//, ""),
+  );
+
   return {
     name: data.name ?? "",
     role: data.role ?? "",
@@ -58,9 +95,12 @@ export function getProfile(): Profile {
     github: data.github ?? "",
     linkedin: data.linkedin ?? "",
     location: data.location ?? "",
-    resumeFile: data.resumeFile ?? "/resume.pdf",
+    resumeFile,
+    hasResume: fs.existsSync(resumePath),
+    photoFile,
+    hasPhoto: fs.existsSync(photoPath),
     bioHtml: marked.parse(bio) as string,
-    skillsHtml: marked.parse(skills) as string,
+    skills: parseSkillBands(skills),
   };
 }
 
@@ -73,6 +113,8 @@ function readProjectFile(filename: string): Project {
     subtitle: data.subtitle ?? "",
     featured: !!data.featured,
     order: data.order ?? 999,
+    domain: data.domain ?? "",
+    coverImage: data.coverImage ?? "",
     techStack: data.techStack ?? [],
     contentHtml: marked.parse(content) as string,
   };

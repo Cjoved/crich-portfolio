@@ -4,6 +4,8 @@ title: "Black Sigatoka Early Stage Detection"
 subtitle: "A computer vision system that goes beyond raw detection — pairing a trained YOLO model with a neuro-symbolic reasoning layer that interprets disease stage, severity, and consistency."
 featured: true
 order: 3
+domain: "Computer Vision"
+coverImage: "/blacksigatoka.png"
 techStack:
   - "Python"
   - "Ultralytics YOLO (YOLO12n)"

@@ -27,32 +27,40 @@ export default async function ProjectPage({
   return (
     <>
       <Header />
-      <article className="mx-auto max-w-3xl px-6 pb-24 pt-6 sm:px-10">
-        <Link
-          href="/#projects"
-          className="mb-10 inline-block font-mono text-xs uppercase tracking-widest text-muted transition-colors hover:text-accent"
-        >
-          ← All Projects
-        </Link>
+      <main id="main">
+        <article className="mx-auto max-w-3xl px-6 pb-24 pt-6 sm:px-10">
+          <Link
+            href="/#projects"
+            className="mb-10 inline-flex min-h-11 cursor-pointer items-center font-mono text-xs uppercase tracking-widest text-muted transition-colors hover:text-accent"
+          >
+            ← All Projects
+          </Link>
 
-        <h1 className="mb-4 font-display text-3xl font-semibold text-ink sm:text-4xl">
-          {project.title}
-        </h1>
-        <p className="mb-8 text-base leading-relaxed text-muted">
-          {project.subtitle}
-        </p>
+          {project.domain ? (
+            <p className="mb-3 font-mono text-xs uppercase tracking-widest text-accent">
+              {project.domain}
+            </p>
+          ) : null}
 
-        <div className="mb-12 flex flex-wrap gap-2">
-          {project.techStack.map((t) => (
-            <Tag key={t}>{t}</Tag>
-          ))}
-        </div>
+          <h1 className="mb-4 font-display text-3xl font-semibold text-ink sm:text-4xl">
+            {project.title}
+          </h1>
+          <p className="mb-8 text-base leading-relaxed text-muted">
+            {project.subtitle}
+          </p>
 
-        <div
-          className="case-study-body"
-          dangerouslySetInnerHTML={{ __html: project.contentHtml }}
-        />
-      </article>
+          <div className="mb-12 flex flex-wrap gap-2">
+            {project.techStack.map((t) => (
+              <Tag key={t}>{t}</Tag>
+            ))}
+          </div>
+
+          <div
+            className="case-study-body"
+            dangerouslySetInnerHTML={{ __html: project.contentHtml }}
+          />
+        </article>
+      </main>
       <Footer profile={profile} />
     </>
   );

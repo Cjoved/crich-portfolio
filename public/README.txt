@@ -1,6 +1,9 @@
-Add these files here before deploying:
+Assets in this folder:
 
-- headshot.jpg (or .png) — your photo, referenced from the About section
-- resume.pdf — must match the `resumeFile` path in content/profile.md
-- favicon.ico
-- og-image.png (optional, 1200x630 — used for social link previews)
+- resume.pdf — Download Resume appears automatically
+- tab.png — used as favicon
+- agent-scraper.png — Agent Scraper cover
+- agentic-ai-evaluator.png — Agentic AI Evaluator cover
+- blacksigatoka.png — Black Sigatoka cover
+
+Optional: og-image.png (1200x630) for social link previews

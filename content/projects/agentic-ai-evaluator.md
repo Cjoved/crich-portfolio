@@ -4,6 +4,8 @@ title: "Agentic AI Evaluator"
 subtitle: "An agentic system that turns messy agricultural trial reports into structured, evaluated, and searchable knowledge — with the LLM grading and retrying its own output before anything is stored."
 featured: true
 order: 2
+domain: "Agents · RAG"
+coverImage: "/agentic-ai-evaluator.png"
 techStack:
   - "Python"
   - "FastAPI"

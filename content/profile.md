@@ -4,9 +4,10 @@ role: "AI Engineer"
 tagline: "Building agentic systems, computer vision pipelines, and RAG infrastructure — end-to-end, from architecture to production."
 email: "veridianocrich@gmail.com"
 github: "https://github.com/Cjoved"
-linkedin: ""
+linkedin: "https://www.linkedin.com/in/crich-joved-veridiano/"
 location: "Nagcarlan, Laguna, Philippines"
 resumeFile: "/resume.pdf"
+photoFile: "/photo.png"
 ---
 
 I'm an AI Engineer building production-grade systems at the intersection of LLM agents, computer
@@ -25,6 +26,7 @@ toward.
 - **Backend & Infra** — FastAPI, Node.js/Express, PostgreSQL, MySQL, Redis, Docker, Langfuse (LLM observability)
 
 <!--
-  AGENT NOTE: fill in `linkedin` above once the LinkedIn profile is live, and confirm `resumeFile`
-  points at an actual PDF placed in /public before deploying. Do not invent a LinkedIn URL.
+  AGENT NOTE: fill in `linkedin` above once the LinkedIn profile is live.
+  resumeFile / photoFile appear in the UI only when the files exist under /public.
+  Do not invent a LinkedIn URL.
 -->
