@@ -6,7 +6,6 @@ featured: true
 order: 1
 domain: "Agents · RAG"
 coverImage: "/agent-scraper.png"
-coverFit: contain
 techStack:
   - "Python 3.12"
   - "FastAPI"

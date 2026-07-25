@@ -5,25 +5,20 @@ import Tag from "./Tag";
 import type { Project } from "@/lib/content";
 
 export default function ProjectCard({ project }: { project: Project }) {
-  const contain = project.coverFit === "contain";
-
   return (
     <Link
       href={`/projects/${project.slug}`}
       className="block cursor-pointer transition-opacity active:opacity-90"
     >
       <CornerFrame className="flex h-full flex-col rounded-sm border border-line bg-surface transition-colors hover:border-accent/30">
+        {/* Always fill the media frame like the other cards; coverFit=contain is for the case-study page only. */}
         <div className="relative aspect-[16/10] overflow-hidden border-b border-line bg-raised">
           {project.coverImage ? (
             <Image
               src={project.coverImage}
               alt={`${project.title} preview`}
               fill
-              className={
-                contain
-                  ? "object-contain object-center p-2"
-                  : "object-cover"
-              }
+              className="object-cover object-top"
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
           ) : (
