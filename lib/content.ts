@@ -35,6 +35,8 @@ export type Project = {
   order: number;
   domain: string;
   coverImage: string;
+  /** How the cover sits in the card crop. Use "contain" for dense diagrams. */
+  coverFit: "cover" | "contain";
   techStack: string[];
   contentHtml: string;
 };
@@ -115,6 +117,7 @@ function readProjectFile(filename: string): Project {
     order: data.order ?? 999,
     domain: data.domain ?? "",
     coverImage: data.coverImage ?? "",
+    coverFit: data.coverFit === "contain" ? "contain" : "cover",
     techStack: data.techStack ?? [],
     contentHtml: marked.parse(content) as string,
   };

@@ -25,8 +25,16 @@ const mono = IBM_Plex_Mono({
   display: "swap",
 });
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "http://localhost:3000");
+
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  metadataBase: new URL(siteUrl),
   title: "Crich Joved Veridiano — AI Engineer",
   description:
     "AI Engineer building agentic LLM systems, computer vision pipelines, and RAG infrastructure end-to-end, from architecture to production.",
@@ -38,6 +46,7 @@ export const metadata: Metadata = {
     description:
       "AI Engineer building agentic LLM systems, computer vision pipelines, and RAG infrastructure end-to-end, from architecture to production.",
     type: "website",
+    url: "/",
     images: [
       {
         url: "/og-image.png",

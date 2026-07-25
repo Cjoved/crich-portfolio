@@ -5,6 +5,8 @@ import Tag from "./Tag";
 import type { Project } from "@/lib/content";
 
 export default function ProjectCard({ project }: { project: Project }) {
+  const contain = project.coverFit === "contain";
+
   return (
     <Link
       href={`/projects/${project.slug}`}
@@ -17,7 +19,11 @@ export default function ProjectCard({ project }: { project: Project }) {
               src={project.coverImage}
               alt={`${project.title} preview`}
               fill
-              className="object-cover"
+              className={
+                contain
+                  ? "object-contain object-center p-2"
+                  : "object-cover"
+              }
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
           ) : (
